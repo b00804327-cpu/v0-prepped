@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prepped | AI Resume Analyzer</title>
+    <meta name="description" content="Perfect your CV for every role, instantly.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">✨</div>
+                <span>Prepped</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#demo">Demo</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#login" class="link-login">Login</a>
+                <a href="#get-started" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="badge">
+            <span class="badge-icon">✨</span> AI-Powered Resume Analysis
+        </div>
+        <h1 class="hero-title">
+            Perfect your CV for <span class="gradient-text">every role</span>, instantly
+        </h1>
+        <p class="hero-subtitle">
+            Our AI analyzes your resume against job descriptions, identifies keyword gaps, and optimizes your bullet points to help you land more interviews.
+        </p>
+        
+        <div class="hero-cta">
+            <button class="btn btn-primary btn-large" id="start-scan-hero-btn">
+                Start Free Scan <span class="arrow">→</span>
+            </button>
+            <button class="btn btn-secondary btn-large" onclick="document.querySelector('#demo').scrollIntoView({behavior: 'smooth'})">
+                See How It Works
+            </button>
+        </div>
+        
+        <div class="hero-features">
+            <span class="check-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> No credit card required</span>
+            <span class="check-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 5 free scans/month</span>
+        </div>
+
+        <!-- Hero Card Graphic -->
+        <div class="hero-graphic">
+            <div class="analysis-card glow-effect">
+                <div class="card-header">
+                    <div class="icon-box">📄</div>
+                    <div class="header-text">
+                        <h3>AI Analysis</h3>
+                        <p>Resume Score</p>
+                    </div>
+                    <div class="status-badge" id="hero-status">Ready</div>
+                </div>
+
+                <div class="score-circle-container">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg"
+                            d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                            />
+                            <path class="circle" id="hero-score-ring"
+                            stroke-dasharray="0, 100"
+                            d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                            />
+                        </svg>
+                        <div class="score-text">
+                            <div class="number" id="hero-score-num">--</div>
+                            <div class="label">/100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-metrics">
+                    <div class="metric-row">
+                        <div class="metric-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Keyword Match
+                        </div>
+                        <div class="metric-value" id="val-match">--%</div>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            Skills Gap
+                        </div>
+                        <div class="metric-value" id="val-gap">-- missing</div>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            ATS Compatibility
+                        </div>
+                        <div class="metric-value" id="val-ats">--</div>
+                    </div>
+                    <div class="metric-row">
+                        <div class="metric-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                            Bullet Points
+                        </div>
+                        <div class="metric-value" id="val-bullets">-- to improve</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-full" id="view-report-btn">
+                    View Full Report <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <h2 class="section-title">Powered by Advanced AI</h2>
+        <p class="section-subtitle">Our intelligent resume analysis engine uses cutting-edge AI to help you stand out from the competition.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon bg-purple-100">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                </div>
+                <h3>Real-time Job Matching</h3>
+                <p>Our AI scans thousands of job postings to match your resume with the perfect opportunities. Get instant compatibility scores for any role.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon bg-purple-200">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                </div>
+                <h3>Keyword Gap Analysis</h3>
+                <p>Identify missing skills and keywords that recruiters look for. Our AI compares your resume against job requirements to maximize your match rate.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon bg-green-100">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3>Bullet Point Optimizer</h3>
+                <p>Transform weak bullet points into powerful, action-oriented statements. Our AI rewrites your experience to highlight achievements and impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section (Dynamic View) -->
+    <section id="demo" class="demo-section">
+        <div class="demo-badge">✨ Interactive Preview</div>
+        <h2 class="section-title">Your Resume Dashboard</h2>
+        <p class="section-subtitle">Below is the real analysis of your resume and AI suggestions.</p>
+
+        <div class="app-window glow-effect" style="display: none;" id="dashboard-window">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="control close"></span>
+                    <span class="control minimize"></span>
+                    <span class="control expand"></span>
+                </div>
+                <div class="window-title">✨ Prepped Dashboard</div>
+            </div>
+            <div class="window-body">
+                <div class="resume-view">
+                    <div class="resume-header">
+                        <div class="resume-title">📄 Your Uploaded Resume</div>
+                        <div class="gap-analysis">
+                            <h4>Missing Keywords To Add:</h4>
+                            <div class="skills-list missing-keywords-list" id="missing-keywords-container">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-section">
+                        <h3 class="section-heading">BULLET POINTS ANALYSIS</h3>
+                        <ul class="bullet-list" id="demo-bullets">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ai-suggestions-panel" id="ai-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">✨ AI Suggestions</span>
+                    </div>
+                    <div class="panel-body" id="suggestions-container">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="demo-empty-state" style="padding: 60px; border: 1px dashed var(--border-color); border-radius: var(--radius-lg); margin-top: 40px; color: var(--text-muted);">
+            Run a scan above to see your dashboard data here!
+        </div>
+    </section>
+
+    <!-- Upload Modal -->
+    <div class="modal-overlay" id="scan-modal">
+        <div class="modal-content glow-effect">
+            <div class="modal-header">
+                <h3 style="font-size: 1.5rem; font-weight: 600;">Start Free Scan</h3>
+                <span class="modal-close" id="close-modal">&times;</span>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Paste Your Resume</label>
+                <textarea class="form-input" id="resume-input" placeholder="Paste your full resume text here..."></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Paste Job Description</label>
+                <textarea class="form-input" id="jd-input" placeholder="Paste the job description you are targeting..."></textarea>
+            </div>
+            <button class="btn btn-primary btn-full btn-large" id="run-scan-btn" style="margin-top: 16px;">
+                Analyze My Resume <span class="arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <div class="logo-icon">✨</div>
+                <span>Prepped</span>
+            </div>
+            <p>© 2026 Prepped. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
